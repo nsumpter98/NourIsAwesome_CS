@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class School(models.Model):  # Id: 1, 2, 3
     institution_name = models.CharField(max_length=200)
     number_applicants = models.CharField(max_length=200)
