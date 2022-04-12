@@ -18,8 +18,12 @@ def index(request):
     a = MajorDegree(major="test school 123",
                     school=sc)
     a.save()
-    e = MajorDegree.objects.get(pk=1)
-    return HttpResponse(e.school)
+    e = MajorDegree.objects.filter(major="CS")
+
+    for result in e:
+        print(result.major)
+        print(result.school)
+    return HttpResponse(e)
 
 def testQuery(request):
     e = MajorDegree.objects.filter(major="CS")
