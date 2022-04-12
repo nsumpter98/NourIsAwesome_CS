@@ -7,17 +7,18 @@ from schoolFinder.models import MajorDegree, School
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    sc = School(institution_name="test",
+                number_applicants="12",
+                percent_applicants_admitted="123",
+                act_75="0",
+                act_25="0",
+                graduation_rate="0.023")
+    sc.save()
 
-
-def updateDB(request):
     a = MajorDegree(major="test school 123",
-                    school=School(institution_name="test",
-                                  number_applicants="12",
-                                  percent_applicants_admitted="123",
-                                  act_75="0",
-                                  act_25="0",
-                                  graduation_rate="0.023"))
+                    school=sc)
     a.save()
+    return HttpResponse("Success")
 
-    return HttpResponse("Hello, world. You're at the polls index.")
+
+
