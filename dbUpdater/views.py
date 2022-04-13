@@ -17,6 +17,7 @@ from schoolFinder.models import Degree, School
 
 
 def index(request):
+
     for i, row in df.iterrows():
         print(row[0])
         sc = School(institution_name=row[0],
@@ -26,6 +27,20 @@ def index(request):
                     act_25=row[4],
                     graduation_rate=row[5])
         sc.save()
+
+    for row in School.objects.all().reverse():
+
+        #row.delete()
+
+        if School.objects.filter(institution_name=row.institution_name,number_applicants=row.number_applicants,
+                                 percent_applicants_admitted=row.percent_applicants_admitted,
+                                 act_75=row.act_75,
+                                 act_25=row.act_25,
+                                 graduation_rate=row.graduation_rate).count() > 1:
+            print("Deleting - " + row.institution_name)
+            row.delete()
+        else:
+            print("Ok - " + row.institution_name)
 
 
     """a = Degree(major="test school 123",
