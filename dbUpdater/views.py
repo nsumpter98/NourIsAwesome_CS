@@ -1,6 +1,16 @@
 from django.http import HttpResponse
 from schoolFinder import models
 from django.shortcuts import render
+import pandas as pd
+import requests
+import io
+
+url = "https://raw.githubusercontent.com/nsumpter98/NourIsAwesome_CS/master/CSVFiles/schools.csv"
+download = requests.get(url).content
+
+df = pd.read_csv(io.StringIO(download.decode('utf-8')))
+
+
 
 # Create your views here.
 from schoolFinder.models import MajorDegree, School
@@ -18,16 +28,7 @@ def index(request):
     a = MajorDegree(major="test school 123",
                     school=sc)
     a.save()
-    e = MajorDegree.objects.filter(major="CS")
-
-    for result in e:
-        print(result.major)
-        print(result.school)
-    return HttpResponse(e)
-
-def testQuery(request):
-    e = MajorDegree.objects.filter(major="CS")
-    return HttpResponse(e.school)
+    return HttpResponse(download)
 
 
 
