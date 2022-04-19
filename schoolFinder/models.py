@@ -25,4 +25,7 @@ class TopDegreesBySchool(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     degree = models.ForeignKey(Degree, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "Degree - " + self.degree.major + " - School - " + self.school.institution_name
+
 # Create your models here.
