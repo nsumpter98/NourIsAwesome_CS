@@ -10,7 +10,7 @@ class School(models.Model):  # Id: 1, 2, 3
     graduation_rate = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.institution_name
+        return self.institution_name#test
 
 
 class Degree(models.Model):
