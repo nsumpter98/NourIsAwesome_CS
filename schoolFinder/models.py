@@ -24,4 +24,9 @@ class TopDegreesBySchool(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     degree = models.ForeignKey(Degree, on_delete=models.CASCADE)
 
+class Test123(models.Models):
+    food = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.food
 # Create your models here.
