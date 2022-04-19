@@ -13,9 +13,9 @@ class School(models.Model):  # Id: 1, 2, 3
         return self.institution_name
 
 
-class MajorDegree(models.Model):
+class Degree(models.Model):
     major = models.CharField(max_length=200)
-    school = models.ForeignKey(School, on_delete=models.CASCADE)  # Id (school): 1, 2, 3
+    description = models.CharField(max_length=200)  # Id (school): 1, 2, 3
 
     def __str__(self):
         return self.major
